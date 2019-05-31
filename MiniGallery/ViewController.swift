@@ -17,11 +17,14 @@ class ViewController: UIViewController, GalleryViewDataSource {
     let loadOperations = LoadOperations()
     
     var works:[Work] = []
-
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        galleryView = GalleryView(frame: CGRect(x: 0, y: 40, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+        let top = UIApplication.shared.statusBarFrame.size.height
+        let bottom = CGFloat(34)
+        galleryView = GalleryView(frame: CGRect(x: 0, y: top, width: self.view.bounds.width, height: self.view.bounds.height - top - bottom))
         self.view.addSubview(galleryView!)
         galleryView?.dataSource = self
         
@@ -30,11 +33,11 @@ class ViewController: UIViewController, GalleryViewDataSource {
     }
     
     func fetchGalleryInfo() {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        showActivityIndicator()
         
         URLSession.shared.dataTask(with: URL(string: api)!) { (data, res, err) in
             DispatchQueue.main.async {
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                self.hideActivityIndicator()
             }
             
             guard err == nil, let data = data else {
@@ -59,6 +62,16 @@ class ViewController: UIViewController, GalleryViewDataSource {
             }
             }.resume()
         
+    }
+    
+    func showActivityIndicator() {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+    }
+    
+    func hideActivityIndicator() {
+        activityIndicator.isHidden = true
+        activityIndicator.stopAnimating()
     }
     
     func presentAlert(msg: String) {
