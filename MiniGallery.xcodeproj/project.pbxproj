@@ -71,23 +71,47 @@
 		F4A2BA0F229EADF30083C9AE /* MiniGallery */ = {
 			isa = PBXGroup;
 			children = (
+				F4A2BA5E22A16B0C0083C9AE /* Data */,
+				F4A2BA5C22A16AA70083C9AE /* Utils */,
+				F4A2BA5B22A16A770083C9AE /* GalleryView */,
 				F4A2BA5822A155A50083C9AE /* MiniGallery-Bridging-Header.h */,
 				F4A2BA10229EADF30083C9AE /* AppDelegate.swift */,
 				F4A2BA12229EADF30083C9AE /* ViewController.swift */,
-				F4A2BA22229EB9390083C9AE /* GalleryView.swift */,
-				F4A2BA28229EBE490083C9AE /* VideoCell.swift */,
-				F4A2BA24229EB9B70083C9AE /* Work.swift */,
-				F4A2BA4E22A03F960083C9AE /* ImageLoad.swift */,
-				F4A2BA5422A129AD0083C9AE /* VideoLoad.swift */,
-				F4A2BA5222A0E4420083C9AE /* DataCacher.swift */,
-				F4A2BA5022A0CF700083C9AE /* LoadOperations.swift */,
-				F4A2BA5922A1659D0083C9AE /* String+MD5.swift */,
 				F4A2BA14229EADF30083C9AE /* Main.storyboard */,
 				F4A2BA17229EADF40083C9AE /* Assets.xcassets */,
 				F4A2BA19229EADF40083C9AE /* LaunchScreen.storyboard */,
 				F4A2BA1C229EADF40083C9AE /* Info.plist */,
 			);
 			path = MiniGallery;
+			sourceTree = "<group>";
+		};
+		F4A2BA5B22A16A770083C9AE /* GalleryView */ = {
+			isa = PBXGroup;
+			children = (
+				F4A2BA22229EB9390083C9AE /* GalleryView.swift */,
+				F4A2BA28229EBE490083C9AE /* VideoCell.swift */,
+			);
+			path = GalleryView;
+			sourceTree = "<group>";
+		};
+		F4A2BA5C22A16AA70083C9AE /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F4A2BA5222A0E4420083C9AE /* DataCacher.swift */,
+				F4A2BA5922A1659D0083C9AE /* String+MD5.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		F4A2BA5E22A16B0C0083C9AE /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F4A2BA4E22A03F960083C9AE /* ImageLoad.swift */,
+				F4A2BA5422A129AD0083C9AE /* VideoLoad.swift */,
+				F4A2BA5022A0CF700083C9AE /* LoadOperations.swift */,
+				F4A2BA24229EB9B70083C9AE /* Work.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
