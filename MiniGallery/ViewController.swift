@@ -16,19 +16,6 @@ class ViewController: UIViewController, GalleryViewDataSource {
     var galleryView: GalleryView?
     let loadOperations = LoadOperations()
     
-//    var works = [Work(1, "https://wpclipart.com/education/animal_numbers/animal_number_1.jpg",
-//                      "https://media.giphy.com/media/l0ExncehJzexFpRHq/giphy.mp4"),
-//                 Work(2, "https://wpclipart.com/education/animal_numbers/animal_number_2.jpg",
-//                      "https://media.giphy.com/media/26gsqQxPQXHBiBEUU/giphy.mp4"),
-//                 Work(3, "https://wpclipart.com/education/animal_numbers/animal_number_3.jpg",
-//                      "https://media.giphy.com/media/oqLgjAahmDPvG/giphy.mp4"),
-//                 Work(4, "https://wpclipart.com/education/animal_numbers/animal_number_4.jpg",
-//                      "https://media.giphy.com/media/d1E1szXDsHUs3WvK/giphy.mp4"),
-//                 Work(5, "https://wpclipart.com/education/animal_numbers/animal_number_5.jpg",
-//                      "https://media.giphy.com/media/OiJjUsdAb11aE/giphy.mp4"),
-//                 Work(6, "https://wpclipart.com/education/animal_numbers/animal_number_6.jpg",
-//                      "https://media.giphy.com/media/4My4Bdf4cakLu/giphy.mp4")]
-    
     var works:[Work] = []
 
     override func viewDidLoad() {
