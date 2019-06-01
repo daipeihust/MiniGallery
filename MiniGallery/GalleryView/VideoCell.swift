@@ -14,6 +14,7 @@ class VideoCell: UIView {
     
     let player = AVPlayer(playerItem: nil)
     let playerLayer = AVPlayerLayer(player: nil)
+    let activityIndicator = UIActivityIndicatorView(style: .gray)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,6 +23,20 @@ class VideoCell: UIView {
         playerLayer.frame = self.bounds
         self.layer.addSublayer(playerLayer)
         NotificationCenter.default.addObserver(self, selector: #selector(playToEnd(notification:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
+        
+        activityIndicator.frame = self.bounds
+        self.addSubview(activityIndicator)
+        activityIndicator.isHidden = true
+        
+    }
+    
+    func showLoadView(shouldShow: Bool) {
+        activityIndicator.isHidden = !shouldShow
+        if shouldShow {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,6 +54,7 @@ class VideoCell: UIView {
         self.replaceCurrentItem(with: viewModel.video.playerItem)
         
         viewModel.isLoading.addObserver {[weak self] (isLoading) in
+            self?.showLoadView(shouldShow: isLoading)
             if !isLoading {
                 DispatchQueue.main.async {
                     self?.replaceCurrentItem(with: viewModel.video.playerItem)

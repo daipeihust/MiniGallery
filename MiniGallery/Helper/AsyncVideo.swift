@@ -51,14 +51,14 @@ class AsyncVideo {
                         self.loadingState = .online
                     }
                     self.loadingCompletion?()
-                }
+                }.resume()
             }
         }
     }
     
     func readCache() -> AVPlayerItem? {
         if let url = self.url {
-            if let cacheUrl = DataCacher.cacheUrlFromUrl(url: url) {
+            if DataCacher.exist(url: url), let cacheUrl = DataCacher.cacheUrlFromUrl(url: url) {
                 return AVPlayerItem(url: cacheUrl)
             }
         }
