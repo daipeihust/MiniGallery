@@ -85,13 +85,13 @@
 		F4A2BA0F229EADF30083C9AE /* MiniGallery */ = {
 			isa = PBXGroup;
 			children = (
+				F4A2BA5822A155A50083C9AE /* MiniGallery-Bridging-Header.h */,
 				F4A2BA6C22A260650083C9AE /* DataService */,
 				F4A2BA6A22A260210083C9AE /* CacheService */,
 				F4A2BA5F22A250860083C9AE /* NetworkService */,
 				F4A2BA5C22A16AA70083C9AE /* Helper */,
 				F4A2BA8122A2C3F40083C9AE /* Extension */,
 				F4A2BA5B22A16A770083C9AE /* GalleryView */,
-				F4A2BA5822A155A50083C9AE /* MiniGallery-Bridging-Header.h */,
 				F4A2BA10229EADF30083C9AE /* AppDelegate.swift */,
 				F4A2BA12229EADF30083C9AE /* GalleryViewController.swift */,
 				F4A2BA14229EADF30083C9AE /* Main.storyboard */,
