@@ -13,9 +13,10 @@ import AVKit
 protocol GalleryViewDataSource: NSObjectProtocol {
     func numberOfWorks(galleryView: GalleryView) -> Int
     
-    func image(at index: Int, of galleryView: GalleryView) -> UIImage
+    func setup(videoCell: VideoCell, at index: Int, of galleryView: GalleryView)
     
-    func playerItem(at index: Int, of galleryView: GalleryView) -> AVPlayerItem?
+    func setup(photoCell: PhotoCell, at index: Int, of galleryView: GalleryView)
+    
 }
 
 
@@ -23,8 +24,8 @@ class GalleryView: UIView {
     
     var focus = 0
     
-    var videoContainers: [VideoCell] = []
-    var imageContainers: [UIImageView] = []
+    var videoCells: [VideoCell] = []
+    var photoCells: [PhotoCell] = []
     
     var imageWidth: Double = 0
     var imageHeight: Double = 0
@@ -43,8 +44,8 @@ class GalleryView: UIView {
         imageWidth = Double(self.bounds.width) / 6
         imageHeight = Double(self.bounds.height) / 4
         self.commonInit()
-        configureVideoContainer()
-        configureImageContainer()
+        configureVideoCell()
+        configurePhotoCell()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -53,7 +54,7 @@ class GalleryView: UIView {
     
     func reloadData() {
         self.reloadVideoData()
-        self.reloadImageData()
+        self.reloadPhotoData()
     }
     
     private func commonInit() -> Void {
@@ -105,38 +106,38 @@ extension GalleryView {
     
     private func reloadVideoData() {
         
-        fillVideoData(videoContainer: videoContainers[(focus + 1) % videoContainers.count], index: focus)
-        fillVideoData(videoContainer: videoContainers[(focus + 2) % videoContainers.count], index: focus + 1)
-        fillVideoData(videoContainer: videoContainers[(focus + 3) % videoContainers.count], index: focus - 1)
+        fillVideoData(videoContainer: videoCells[(focus + 1) % videoCells.count], index: focus)
+        fillVideoData(videoContainer: videoCells[(focus + 2) % videoCells.count], index: focus + 1)
+        fillVideoData(videoContainer: videoCells[(focus + 3) % videoCells.count], index: focus - 1)
         
         guard let count = self.dataSource?.numberOfWorks(galleryView: self) else {
             return
         }
         if count > 0 {
-            videoContainers[focus + 1].play()
+            videoCells[focus + 1].play()
         }
     }
     
     
-    private func configureVideoContainer() {
+    private func configureVideoCell() {
         let width = self.bounds.width
         let height = self.bounds.width
         for i in 0...2 {
             let container = VideoCell(frame: CGRect(x: CGFloat(i - 1) * width, y: 0, width: width, height: height))
             self.addSubview(container)
-            self.videoContainers.append(container)
+            self.videoCells.append(container)
         }
         
     }
     
     private func videoCellDidSwipe(left: Bool) {
-        let ci = (focus + 1) % videoContainers.count
-        let ri = (ci + 1) % videoContainers.count
-        let li = (ci + 2) % videoContainers.count
+        let ci = (focus + 1) % videoCells.count
+        let ri = (ci + 1) % videoCells.count
+        let li = (ci + 2) % videoCells.count
         
-        let centerView = videoContainers[ci]
-        let rightView = videoContainers[ri]
-        let leftView = videoContainers[li]
+        let centerView = videoCells[ci]
+        let rightView = videoCells[ri]
+        let leftView = videoCells[li]
         beforeAnimation()
         centerView.stop()
         if left {
@@ -165,15 +166,15 @@ extension GalleryView {
     }
     
     func reloadVideo(at index: Int) {
-        fillVideoData(videoContainer: videoContainers[(index + 1) % videoContainers.count], index: index)
+        fillVideoData(videoContainer: videoCells[(index + 1) % videoCells.count], index: index)
     }
     
     private func fillVideoData(videoContainer: VideoCell, index: Int) {
         guard let count = self.dataSource?.numberOfWorks(galleryView: self) else { return }
-        videoContainer.replaceCurrentItem(with: nil)
+        
+        videoContainer.prepareForReuse()
         if index >= 0 && index < count {
-            guard let playerItem = self.dataSource?.playerItem(at: index, of: self) else { return }
-            videoContainer.replaceCurrentItem(with: playerItem)
+            self.dataSource?.setup(videoCell: videoContainer, at: index, of: self)
         }
     }
     
@@ -182,88 +183,87 @@ extension GalleryView {
 // image part
 extension GalleryView {
     
-    private func configureImageContainer() {
+    private func configurePhotoCell() {
         let width = Double(self.bounds.size.width)
         let y = Double(self.bounds.size.height * 3 / 4)
         let distance = (width - imageWidth) / 2
         for i in 0...4 {
-            let imageContainer = UIImageView(frame: CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight))
-            imageContainer.isHidden = true
-            imageContainer.contentMode = .scaleAspectFit
-            self.imageContainers.append(imageContainer)
-            self.addSubview(imageContainer)
+            let photoCell = PhotoCell(frame: CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight))
+            photoCell.isHidden = true
+            self.photoCells.append(photoCell)
+            self.addSubview(photoCell)
             let x = Double(i - 1) * distance + imageWidth / 2
-            imageContainer.center = CGPoint(x: x, y: y)
+            photoCell.center = CGPoint(x: x, y: y)
         }
         
-        imageContainers[2].transform = imageContainers[2].transform.scaledBy(x: 1.5, y: 1.5)
+        photoCells[2].transform = photoCells[2].transform.scaledBy(x: 1.5, y: 1.5)
         
-        reloadImageData()
+        reloadPhotoData()
         
     }
     
-    private func reloadImageData() {
-        fillImageData(imageContainer: imageContainers[(focus + 6) % imageContainers.count], index: focus - 1)
-        fillImageData(imageContainer: imageContainers[(focus + 5) % imageContainers.count], index: focus - 2)
-        fillImageData(imageContainer: imageContainers[(focus + 2) % imageContainers.count], index: focus)
-        fillImageData(imageContainer: imageContainers[(focus + 3) % imageContainers.count], index: focus + 1)
-        fillImageData(imageContainer: imageContainers[(focus + 4) % imageContainers.count], index: focus + 2)
+    private func reloadPhotoData() {
+        fillPhotoData(photoCell: photoCells[(focus + 6) % photoCells.count], index: focus - 1)
+        fillPhotoData(photoCell: photoCells[(focus + 5) % photoCells.count], index: focus - 2)
+        fillPhotoData(photoCell: photoCells[(focus + 2) % photoCells.count], index: focus)
+        fillPhotoData(photoCell: photoCells[(focus + 3) % photoCells.count], index: focus + 1)
+        fillPhotoData(photoCell: photoCells[(focus + 4) % photoCells.count], index: focus + 2)
     }
     
     private func imageCellDidSwipe(left: Bool) {
         
-        let i2 = (focus + 2) % imageContainers.count
-        let i0 = (i2 + 3) % imageContainers.count
-        let i1 = (i2 + 4) % imageContainers.count
-        let i3 = (i2 + 1) % imageContainers.count
-        let i4 = (i2 + 2) % imageContainers.count
+        let i2 = (focus + 2) % photoCells.count
+        let i0 = (i2 + 3) % photoCells.count
+        let i1 = (i2 + 4) % photoCells.count
+        let i3 = (i2 + 1) % photoCells.count
+        let i4 = (i2 + 2) % photoCells.count
         
         if left {
-            let i4Center = imageContainers[i4].center
+            let i4Center = photoCells[i4].center
             UIView.animate(withDuration: 0.7, animations: {
-                self.imageContainers[i4].center = self.imageContainers[i3].center
-                self.imageContainers[i3].center = self.imageContainers[i2].center
-                self.imageContainers[i2].center = self.imageContainers[i1].center
-                self.imageContainers[i1].center = self.imageContainers[i0].center
+                self.photoCells[i4].center = self.photoCells[i3].center
+                self.photoCells[i3].center = self.photoCells[i2].center
+                self.photoCells[i2].center = self.photoCells[i1].center
+                self.photoCells[i1].center = self.photoCells[i0].center
                 
-                self.imageContainers[i2].transform = self.imageContainers[i3].transform
-                self.imageContainers[i3].transform = self.imageContainers[i3].transform.scaledBy(x: 1.5, y: 1.5)
+                self.photoCells[i2].transform = self.photoCells[i3].transform
+                self.photoCells[i3].transform = self.photoCells[i3].transform.scaledBy(x: 1.5, y: 1.5)
             }) { (finished) in
                 
             }
-            self.imageContainers[i0].center = i4Center
-            fillImageData(imageContainer: self.imageContainers[i0], index: focus + 3)
+            self.photoCells[i0].center = i4Center
+            fillPhotoData(photoCell: self.photoCells[i0], index: focus + 3)
         } else {
-            let i0Center = imageContainers[i0].center
+            let i0Center = photoCells[i0].center
             UIView.animate(withDuration: 0.7, animations: {
-                self.imageContainers[i0].center = self.imageContainers[i1].center
-                self.imageContainers[i1].center = self.imageContainers[i2].center
-                self.imageContainers[i2].center = self.imageContainers[i3].center
-                self.imageContainers[i3].center = self.imageContainers[i4].center
+                self.photoCells[i0].center = self.photoCells[i1].center
+                self.photoCells[i1].center = self.photoCells[i2].center
+                self.photoCells[i2].center = self.photoCells[i3].center
+                self.photoCells[i3].center = self.photoCells[i4].center
                 
-                self.imageContainers[i2].transform = self.imageContainers[i1].transform
-                self.imageContainers[i1].transform = self.imageContainers[i1].transform.scaledBy(x: 1.5, y: 1.5)
+                self.photoCells[i2].transform = self.photoCells[i1].transform
+                self.photoCells[i1].transform = self.photoCells[i1].transform.scaledBy(x: 1.5, y: 1.5)
             })
-            self.imageContainers[i4].center = i0Center
-            fillImageData(imageContainer: self.imageContainers[i4], index: focus - 3)
+            self.photoCells[i4].center = i0Center
+            fillPhotoData(photoCell: self.photoCells[i4], index: focus - 3)
         }
     }
     
-    private func fillImageData(imageContainer: UIImageView, index: Int) {
+    private func fillPhotoData(photoCell: PhotoCell, index: Int) {
         guard let count = self.dataSource?.numberOfWorks(galleryView: self) else {
             return
         }
-        imageContainer.image = nil
+        photoCell.prepareForReuse()
         if index < 0 || index >= count {
-            imageContainer.isHidden = true
+            photoCell.isHidden = true
         } else {
-            imageContainer.isHidden = false
-            imageContainer.image = self.dataSource?.image(at: index, of: self)
+            photoCell.isHidden = false
+            self.dataSource?.setup(photoCell: photoCell, at: index, of: self)
         }
     }
     
     func reloadImage(at index: Int) {
-        fillImageData(imageContainer: imageContainers[(index + 2) % imageContainers.count], index: index)
+        fillPhotoData(photoCell: photoCells[(index + 2) % photoCells.count], index: index)
     }
     
 }

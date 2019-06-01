@@ -9,7 +9,28 @@
 import Foundation
 
 class DataCacher {
-    class func save(data: Data, for url: String) -> URL? {
+    
+    static var cacheDir: URL? {
+        guard let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) else {
+            return nil
+        }
+        return dir
+    }
+    
+    class func save(data: Data, for key: String) {
+        if let dir = cacheDir {
+            try? data.write(to: dir.appendingPathComponent(key))
+        }
+    }
+    
+    class func read(key: String) -> Data? {
+        if let dir = cacheDir {
+            return try? Data(contentsOf: dir.appendingPathComponent(key))
+        }
+        return nil
+    }
+    
+    class func save(data: Data, for url: URL) -> URL? {
         
         guard let fileUrl = cacheUrlFromUrl(url: url) else {
             return nil
@@ -24,7 +45,7 @@ class DataCacher {
         return nil
     }
     
-    class func read(url: String) -> Data? {
+    class func read(url: URL) -> Data? {
         
         guard let fileUrl = cacheUrlFromUrl(url: url) else {
             return nil
@@ -33,7 +54,7 @@ class DataCacher {
         return try? Data(contentsOf: fileUrl)
     }
     
-    class func clear(url: String) {
+    class func clear(url: URL) {
         
         guard let fileUrl = cacheUrlFromUrl(url: url) else {
             return
@@ -42,7 +63,7 @@ class DataCacher {
         try? FileManager.default.removeItem(at: fileUrl)
     }
     
-    class func exist(url: String) -> Bool {
+    class func exist(url: URL) -> Bool {
         guard let fileUrl = cacheUrlFromUrl(url: url) else {
             return false
         }
@@ -50,10 +71,7 @@ class DataCacher {
         return isExist
     }
     
-    class func cacheUrlFromUrl(url: String) -> URL? {
-        guard let url = URL(string: url) else {
-            return nil
-        }
+    class func cacheUrlFromUrl(url: URL) -> URL? {
         
         let fileName = url.absoluteString.md5 + "." + url.pathExtension
         

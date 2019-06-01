@@ -8,37 +8,51 @@
 
 /* Begin PBXBuildFile section */
 		F4A2BA11229EADF30083C9AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2BA10229EADF30083C9AE /* AppDelegate.swift */; };
-		F4A2BA13229EADF30083C9AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2BA12229EADF30083C9AE /* ViewController.swift */; };
+		F4A2BA13229EADF30083C9AE /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2BA12229EADF30083C9AE /* GalleryViewController.swift */; };
 		F4A2BA16229EADF30083C9AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4A2BA14229EADF30083C9AE /* Main.storyboard */; };
 		F4A2BA18229EADF40083C9AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4A2BA17229EADF40083C9AE /* Assets.xcassets */; };
 		F4A2BA1B229EADF40083C9AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4A2BA19229EADF40083C9AE /* LaunchScreen.storyboard */; };
 		F4A2BA23229EB9390083C9AE /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2BA22229EB9390083C9AE /* GalleryView.swift */; };
-		F4A2BA25229EB9B70083C9AE /* Work.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2BA24229EB9B70083C9AE /* Work.swift */; };
 		F4A2BA29229EBE490083C9AE /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2BA28229EBE490083C9AE /* VideoCell.swift */; };
-		F4A2BA4F22A03F960083C9AE /* ImageLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2BA4E22A03F960083C9AE /* ImageLoad.swift */; };
-		F4A2BA5122A0CF700083C9AE /* LoadOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2BA5022A0CF700083C9AE /* LoadOperations.swift */; };
 		F4A2BA5322A0E4420083C9AE /* DataCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2BA5222A0E4420083C9AE /* DataCacher.swift */; };
-		F4A2BA5522A129AD0083C9AE /* VideoLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2BA5422A129AD0083C9AE /* VideoLoad.swift */; };
 		F4A2BA5A22A1659D0083C9AE /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2BA5922A1659D0083C9AE /* String+MD5.swift */; };
+		F4A2BA6122A254640083C9AE /* GalleryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2BA6022A254640083C9AE /* GalleryService.swift */; };
+		F4A2BA6322A257600083C9AE /* GalleryResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2BA6222A257600083C9AE /* GalleryResModel.swift */; };
+		F4A2BA6F22A2649E0083C9AE /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2BA6E22A2649E0083C9AE /* Observable.swift */; };
+		F4A2BA7122A26CDE0083C9AE /* GalleryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2BA7022A26CDE0083C9AE /* GalleryController.swift */; };
+		F4A2BA7322A26E990083C9AE /* PhotoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2BA7222A26E990083C9AE /* PhotoCellViewModel.swift */; };
+		F4A2BA7622A26EBD0083C9AE /* VideoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2BA7522A26EBD0083C9AE /* VideoCellViewModel.swift */; };
+		F4A2BA7822A270B40083C9AE /* GalleryViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2BA7722A270B40083C9AE /* GalleryViewViewModel.swift */; };
+		F4A2BA7A22A272820083C9AE /* AlertViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2BA7922A272820083C9AE /* AlertViewViewModel.swift */; };
+		F4A2BA7C22A2781B0083C9AE /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2BA7B22A2781B0083C9AE /* AsyncImage.swift */; };
+		F4A2BA7E22A2782A0083C9AE /* AsyncVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2BA7D22A2782A0083C9AE /* AsyncVideo.swift */; };
+		F4A2BA8022A286E90083C9AE /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2BA7F22A286E90083C9AE /* PhotoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F4A2BA0D229EADF30083C9AE /* MiniGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4A2BA10229EADF30083C9AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F4A2BA12229EADF30083C9AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F4A2BA12229EADF30083C9AE /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		F4A2BA15229EADF30083C9AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F4A2BA17229EADF40083C9AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4A2BA1A229EADF40083C9AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4A2BA1C229EADF40083C9AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4A2BA22229EB9390083C9AE /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
-		F4A2BA24229EB9B70083C9AE /* Work.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Work.swift; sourceTree = "<group>"; };
 		F4A2BA28229EBE490083C9AE /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
-		F4A2BA4E22A03F960083C9AE /* ImageLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoad.swift; sourceTree = "<group>"; };
-		F4A2BA5022A0CF700083C9AE /* LoadOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadOperations.swift; sourceTree = "<group>"; };
 		F4A2BA5222A0E4420083C9AE /* DataCacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCacher.swift; sourceTree = "<group>"; };
-		F4A2BA5422A129AD0083C9AE /* VideoLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoLoad.swift; sourceTree = "<group>"; };
 		F4A2BA5822A155A50083C9AE /* MiniGallery-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MiniGallery-Bridging-Header.h"; sourceTree = "<group>"; };
 		F4A2BA5922A1659D0083C9AE /* String+MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
+		F4A2BA6022A254640083C9AE /* GalleryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryService.swift; sourceTree = "<group>"; };
+		F4A2BA6222A257600083C9AE /* GalleryResModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryResModel.swift; sourceTree = "<group>"; };
+		F4A2BA6E22A2649E0083C9AE /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		F4A2BA7022A26CDE0083C9AE /* GalleryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryController.swift; sourceTree = "<group>"; };
+		F4A2BA7222A26E990083C9AE /* PhotoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellViewModel.swift; sourceTree = "<group>"; };
+		F4A2BA7522A26EBD0083C9AE /* VideoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCellViewModel.swift; sourceTree = "<group>"; };
+		F4A2BA7722A270B40083C9AE /* GalleryViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewViewModel.swift; sourceTree = "<group>"; };
+		F4A2BA7922A272820083C9AE /* AlertViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewViewModel.swift; sourceTree = "<group>"; };
+		F4A2BA7B22A2781B0083C9AE /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
+		F4A2BA7D22A2782A0083C9AE /* AsyncVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncVideo.swift; sourceTree = "<group>"; };
+		F4A2BA7F22A286E90083C9AE /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,12 +85,15 @@
 		F4A2BA0F229EADF30083C9AE /* MiniGallery */ = {
 			isa = PBXGroup;
 			children = (
-				F4A2BA5E22A16B0C0083C9AE /* Data */,
-				F4A2BA5C22A16AA70083C9AE /* Utils */,
+				F4A2BA6C22A260650083C9AE /* DataService */,
+				F4A2BA6A22A260210083C9AE /* CacheService */,
+				F4A2BA5F22A250860083C9AE /* NetworkService */,
+				F4A2BA5C22A16AA70083C9AE /* Helper */,
+				F4A2BA8122A2C3F40083C9AE /* Extension */,
 				F4A2BA5B22A16A770083C9AE /* GalleryView */,
 				F4A2BA5822A155A50083C9AE /* MiniGallery-Bridging-Header.h */,
 				F4A2BA10229EADF30083C9AE /* AppDelegate.swift */,
-				F4A2BA12229EADF30083C9AE /* ViewController.swift */,
+				F4A2BA12229EADF30083C9AE /* GalleryViewController.swift */,
 				F4A2BA14229EADF30083C9AE /* Main.storyboard */,
 				F4A2BA17229EADF40083C9AE /* Assets.xcassets */,
 				F4A2BA19229EADF40083C9AE /* LaunchScreen.storyboard */,
@@ -90,28 +107,88 @@
 			children = (
 				F4A2BA22229EB9390083C9AE /* GalleryView.swift */,
 				F4A2BA28229EBE490083C9AE /* VideoCell.swift */,
+				F4A2BA7F22A286E90083C9AE /* PhotoCell.swift */,
 			);
 			path = GalleryView;
 			sourceTree = "<group>";
 		};
-		F4A2BA5C22A16AA70083C9AE /* Utils */ = {
+		F4A2BA5C22A16AA70083C9AE /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F4A2BA6E22A2649E0083C9AE /* Observable.swift */,
+				F4A2BA7B22A2781B0083C9AE /* AsyncImage.swift */,
+				F4A2BA7D22A2782A0083C9AE /* AsyncVideo.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		F4A2BA5F22A250860083C9AE /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				F4A2BA6922A25E6A0083C9AE /* Model */,
+				F4A2BA6822A25E5C0083C9AE /* Service */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		F4A2BA6822A25E5C0083C9AE /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				F4A2BA6022A254640083C9AE /* GalleryService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		F4A2BA6922A25E6A0083C9AE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F4A2BA6222A257600083C9AE /* GalleryResModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F4A2BA6A22A260210083C9AE /* CacheService */ = {
 			isa = PBXGroup;
 			children = (
 				F4A2BA5222A0E4420083C9AE /* DataCacher.swift */,
-				F4A2BA5922A1659D0083C9AE /* String+MD5.swift */,
 			);
-			path = Utils;
+			path = CacheService;
 			sourceTree = "<group>";
 		};
-		F4A2BA5E22A16B0C0083C9AE /* Data */ = {
+		F4A2BA6C22A260650083C9AE /* DataService */ = {
 			isa = PBXGroup;
 			children = (
-				F4A2BA4E22A03F960083C9AE /* ImageLoad.swift */,
-				F4A2BA5422A129AD0083C9AE /* VideoLoad.swift */,
-				F4A2BA5022A0CF700083C9AE /* LoadOperations.swift */,
-				F4A2BA24229EB9B70083C9AE /* Work.swift */,
+				F4A2BA7422A26EA00083C9AE /* ViewModel */,
+				F4A2BA6D22A2635A0083C9AE /* DataController */,
 			);
-			path = Data;
+			path = DataService;
+			sourceTree = "<group>";
+		};
+		F4A2BA6D22A2635A0083C9AE /* DataController */ = {
+			isa = PBXGroup;
+			children = (
+				F4A2BA7022A26CDE0083C9AE /* GalleryController.swift */,
+			);
+			path = DataController;
+			sourceTree = "<group>";
+		};
+		F4A2BA7422A26EA00083C9AE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F4A2BA7722A270B40083C9AE /* GalleryViewViewModel.swift */,
+				F4A2BA7222A26E990083C9AE /* PhotoCellViewModel.swift */,
+				F4A2BA7522A26EBD0083C9AE /* VideoCellViewModel.swift */,
+				F4A2BA7922A272820083C9AE /* AlertViewViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F4A2BA8122A2C3F40083C9AE /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F4A2BA5922A1659D0083C9AE /* String+MD5.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,16 +262,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4A2BA6F22A2649E0083C9AE /* Observable.swift in Sources */,
 				F4A2BA29229EBE490083C9AE /* VideoCell.swift in Sources */,
-				F4A2BA4F22A03F960083C9AE /* ImageLoad.swift in Sources */,
 				F4A2BA5A22A1659D0083C9AE /* String+MD5.swift in Sources */,
-				F4A2BA25229EB9B70083C9AE /* Work.swift in Sources */,
-				F4A2BA5122A0CF700083C9AE /* LoadOperations.swift in Sources */,
-				F4A2BA13229EADF30083C9AE /* ViewController.swift in Sources */,
-				F4A2BA5522A129AD0083C9AE /* VideoLoad.swift in Sources */,
+				F4A2BA6122A254640083C9AE /* GalleryService.swift in Sources */,
+				F4A2BA7622A26EBD0083C9AE /* VideoCellViewModel.swift in Sources */,
+				F4A2BA8022A286E90083C9AE /* PhotoCell.swift in Sources */,
+				F4A2BA7A22A272820083C9AE /* AlertViewViewModel.swift in Sources */,
+				F4A2BA13229EADF30083C9AE /* GalleryViewController.swift in Sources */,
+				F4A2BA7122A26CDE0083C9AE /* GalleryController.swift in Sources */,
+				F4A2BA7E22A2782A0083C9AE /* AsyncVideo.swift in Sources */,
 				F4A2BA23229EB9390083C9AE /* GalleryView.swift in Sources */,
+				F4A2BA7C22A2781B0083C9AE /* AsyncImage.swift in Sources */,
+				F4A2BA7822A270B40083C9AE /* GalleryViewViewModel.swift in Sources */,
 				F4A2BA5322A0E4420083C9AE /* DataCacher.swift in Sources */,
+				F4A2BA7322A26E990083C9AE /* PhotoCellViewModel.swift in Sources */,
 				F4A2BA11229EADF30083C9AE /* AppDelegate.swift in Sources */,
+				F4A2BA6322A257600083C9AE /* GalleryResModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

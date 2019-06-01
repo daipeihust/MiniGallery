@@ -32,6 +32,25 @@ class VideoCell: UIView {
         player.replaceCurrentItem(with: playerItem)
     }
     
+    func setup(with viewModel: VideoCellViewModel) {
+        
+        viewModel.startLoading()
+        
+        self.replaceCurrentItem(with: viewModel.video.playerItem)
+        
+        viewModel.isLoading.addObserver {[weak self] (isLoading) in
+            if !isLoading {
+                DispatchQueue.main.async {
+                    self?.replaceCurrentItem(with: viewModel.video.playerItem)
+                }
+            }
+        }
+    }
+    
+    func prepareForReuse() {
+        self.replaceCurrentItem(with: nil)
+    }
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
