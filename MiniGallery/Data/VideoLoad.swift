@@ -24,7 +24,7 @@ class VideoLoad: Operation {
         }
         
         if DataCacher.exist(url: work.videoUrl) {
-            let cachedUrl = DataCacher.fileUrlFromUrl(url: work.videoUrl)
+            let cachedUrl = DataCacher.cacheUrlFromUrl(url: work.videoUrl)
             work.cachedVideoUrl = cachedUrl
             work.video = AVPlayerItem(url: cachedUrl!)
             work.videoState = .cached

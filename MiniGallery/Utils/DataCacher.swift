@@ -11,7 +11,7 @@ import Foundation
 class DataCacher {
     class func save(data: Data, for url: String) -> URL? {
         
-        guard let fileUrl = fileUrlFromUrl(url: url) else {
+        guard let fileUrl = cacheUrlFromUrl(url: url) else {
             return nil
         }
         
@@ -26,7 +26,7 @@ class DataCacher {
     
     class func read(url: String) -> Data? {
         
-        guard let fileUrl = fileUrlFromUrl(url: url) else {
+        guard let fileUrl = cacheUrlFromUrl(url: url) else {
             return nil
         }
         
@@ -35,7 +35,7 @@ class DataCacher {
     
     class func clear(url: String) {
         
-        guard let fileUrl = fileUrlFromUrl(url: url) else {
+        guard let fileUrl = cacheUrlFromUrl(url: url) else {
             return
         }
         
@@ -43,14 +43,14 @@ class DataCacher {
     }
     
     class func exist(url: String) -> Bool {
-        guard let fileUrl = fileUrlFromUrl(url: url) else {
+        guard let fileUrl = cacheUrlFromUrl(url: url) else {
             return false
         }
         let isExist = FileManager.default.fileExists(atPath: fileUrl.path)
         return isExist
     }
     
-    class func fileUrlFromUrl(url: String) -> URL? {
+    class func cacheUrlFromUrl(url: String) -> URL? {
         guard let url = URL(string: url) else {
             return nil
         }
