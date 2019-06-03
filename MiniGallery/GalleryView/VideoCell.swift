@@ -15,6 +15,7 @@ class VideoCell: UIView {
     let player = AVPlayer(playerItem: nil)
     let playerLayer = AVPlayerLayer(player: nil)
     let activityIndicator = UIActivityIndicatorView(style: .gray)
+    weak var viewModel: VideoCellViewModel?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -61,9 +62,13 @@ class VideoCell: UIView {
                 }
             }
         }
+        self.viewModel = viewModel
     }
     
     func prepareForReuse() {
+        if let viewModel = self.viewModel {
+            viewModel.isLoading.removeObserver()
+        }
         self.replaceCurrentItem(with: nil)
     }
     
